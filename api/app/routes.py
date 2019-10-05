@@ -2,12 +2,26 @@
 
 import random
 from flask import Flask, jsonify, request
+from flask_restful import Resource, Api
 from flasgger import Swagger
 from flasgger.utils import swag_from
 
 from app import app
 
+api = Api(app)
+#app.config['SWAGGER'] = {
+#    'title': 'Flasgger RESTful',
+#    'uiversion': 2
+#}
+
 Swagger(app)
+
+class HelloWorld(Resource):
+    @swag_from('hello.yml')
+    def get(self):
+        return {'hello': 'world'}
+
+api.add_resource(HelloWorld, '/restful')
 
 @app.route("/")
 def index():
@@ -20,7 +34,8 @@ def index():
 def hello():
     return """
         <h2>Whale, Hello World!</h2>
-        <a href="/">Back to  whalecom</a><br />        
+        <a href="/">Back to  whalecom</a><br />
+        <a href="/restful">Restful Example</a><br />         
         <a href="/api/python/?size=5">Example</a><br /><br />
         <a href="/apidocs">Flasgger</a><br />Borrowed from <a href="http://brunorocha.org/python/flask/flasgger-api-playground-with-flask-and-swagger-ui.html">Bruno Rocha</a>
     """

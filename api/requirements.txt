@@ -1,3 +1,4 @@
 flask
+flask_restful
 jsonschema==2.6.0
 flasgger

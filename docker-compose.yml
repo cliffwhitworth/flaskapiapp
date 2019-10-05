@@ -1,8 +1,24 @@
 version: '3'
 services:
+  mysql:
+    build:
+      dockerfile: Dockerfile
+      context: ./mysql
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: some_secret
+      MYSQL_USER: mysql_user
+      MYSQL_PASSWORD: some_secret
   api:
     build:
       dockerfile: Dockerfile
       context: ./api
     ports:
-      - '5000:80'
+      - "5000:80"
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=flaskapiapp
+      - MYSQL_USER=mysql_user
+      - MYSQL_PASSWORD=some_secret

@@ -1,0 +1,17 @@
+    This is an example of using Flasgger and Swagger for flask-restful
+    Returns Hello World
+    ---
+    tags:
+        - Restful Example
+    responses:
+        500:
+          description: Error Goodbye World
+        200:
+          description: Hello World
+          schema:
+            id: restful
+            properties:
+              route:
+                type: string
+                schema:
+                  $ref: '#/definitions/Restful'           
