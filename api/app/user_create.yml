@@ -1,0 +1,27 @@
+    This is the Users Create API
+    Call this api passing a user first name and last name and create user
+    ---
+    tags:
+      - Users
+    parameters:
+      - name: name
+        in: body
+        example: {'firstname': 'Cleo', 'lastname': 'Peeo'}
+        required: true
+        description: The user first name, last name
+    responses:
+      500:
+        description: Error The user does not exist!
+      201:
+        description: Create User
+        schema:
+          id: create_user
+          properties:
+            firstname: 
+              type: string
+              description: User first name
+              default: Cleo
+            lastname:
+              type: string
+              description: User last name
+              default: Peeo

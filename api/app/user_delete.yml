@@ -1,0 +1,23 @@
+    This is the Users Delete API
+    Call this api passing a user id and delete user
+    ---
+    tags:
+      - Users
+    parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+        description: The user id
+    responses:
+      500:
+        description: Error The user does not exist!
+      204:
+        description: Delete User
+        schema:
+          id: delete_user
+          properties:
+            id:
+              type: string
+              description: User ID
+              default: 3

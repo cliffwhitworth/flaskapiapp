@@ -1,0 +1,10 @@
+    This is the Users List API
+    Call this api get a list of users
+    ---
+    tags:
+      - Users
+    responses:
+      500:
+        description: Error No list available
+      201:
+        description: List Users

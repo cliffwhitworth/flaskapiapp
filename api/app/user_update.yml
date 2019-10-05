@@ -1,0 +1,32 @@
+    This is the Users Update API
+    Call this api passing a user id and update user
+    ---
+    tags:
+      - Users
+    parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+        description: The user id
+      - name: name
+        in: body
+        example: {'firstname': 'Peachy', 'lastname': 'Peaches'}
+        required: true
+        description: The user first name, last name
+    responses:
+      500:
+        description: Error The user does not exist!
+      201:
+        description: Update User
+        schema:
+          id: update_user
+          properties:
+            firstname: 
+              type: string
+              description: User first name
+              default: Peachy
+            lastname:
+              type: string
+              description: User last name
+              default: Peaches
