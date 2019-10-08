@@ -1,4 +1,5 @@
 flask
 flask_restful
+flask_mysql
 jsonschema==2.6.0
 flasgger

@@ -1,9 +1,9 @@
-CREATE DATABASE  IF NOT EXISTS `appWithAPIdb` /*!40100 DEFAULT CHARACTER SET utf8 */;
-USE `appWithAPIdb`;
+CREATE DATABASE  IF NOT EXISTS `flaskapiapp` /*!40100 DEFAULT CHARACTER SET utf8 */;
+USE `flaskapiapp`;
 
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: appWithAPIdb
+-- Host: localhost    Database: flaskapiapp
 -- ------------------------------------------------------
 -- Server version	5.7.21-log
 

@@ -1,4 +1,4 @@
 FROM mysql:latest
-ENV MYSQL_DATABASE=appWithAPIdb \
+ENV MYSQL_DATABASE=flaskapiapp \
     MYSQL_ROOT_PASSWORD=some_secret
 ADD ./initdb.sql /docker-entrypoint-initdb.d/
