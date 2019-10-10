@@ -2,6 +2,7 @@
 import json
 from flask import Flask, jsonify
 from flask_restful import reqparse, abort, Api, Resource
+from flask_jwt import jwt_required
 from flasgger.utils import swag_from
 
 from app import app
@@ -62,6 +63,7 @@ class Users(Resource):
 
 class UsersList(Resource):
     @swag_from('user_list.yml')
+    @jwt_required()
     def get(self):
         #return USERS
         conn = mysql.connect()

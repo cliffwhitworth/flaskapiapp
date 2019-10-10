@@ -5,6 +5,7 @@ app = Flask(__name__)
 Swagger(app)
 
 from app.users import usersAPI
+from app.auth import authenticate
 from app import routes
 from app import hello
 from app import awesome
