@@ -1,12 +1,16 @@
+# https://pythonhosted.org/Flask-JWT/
+
 import hashlib
 
 from flask import Flask, jsonify
 from flask_jwt import JWT, jwt_required, current_identity
 from werkzeug.security import safe_str_cmp
 
+# Get the app and mysql info
 from app import app
 from app.db import mysql
 
+# From flask-JWT website example
 class User(object):
     def __init__(self, id, username, password):
         self.id = id
@@ -16,7 +20,9 @@ class User(object):
     def __str__(self):
         return "User(id='%s')" % self.id
 
+# Route is /auth
 def authenticate(username, password):
+    # Use conn and cursor outside of try block
     conn = mysql.connect()
     cursor = mysql.get_db().cursor()
     try:
@@ -57,7 +63,8 @@ def identity(payload):
 app.config['SECRET_KEY'] = 'super-secret'
 jwt = JWT(app, authenticate, identity)
 
-@app.route('/protected')
+# Define route to get userid
+@app.route('/userid')
 @jwt_required()
-def protected():
+def userid():
     return '%s' % current_identity

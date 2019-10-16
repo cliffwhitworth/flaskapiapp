@@ -10,4 +10,5 @@ from app import routes
 from app import hello
 from app import awesome
 
+# Uncomment for local testing without docker-compose
 # app.run(debug=True, host='0.0.0.0')

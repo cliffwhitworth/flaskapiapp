@@ -1,4 +1,5 @@
 # https://flask-restful.readthedocs.io/en/latest/quickstart.html#a-minimal-api
+
 import json
 from flask import Flask, jsonify
 from flask_restful import reqparse, abort, Api, Resource
@@ -9,6 +10,7 @@ from app import app
 from app.db import mysql
 api = Api(app)
 
+# Testing purposes
 USERS = {
     1: {'firstname': 'Coco', 'lastname': 'Bella'},
     2: {'firstname': 'Peachy', 'lastname': 'Peach'},
@@ -22,6 +24,7 @@ parser = reqparse.RequestParser()
 parser.add_argument('firstname')
 parser.add_argument('lastname')
 
+# Route needs ID for get, put, delete
 class Users(Resource):
     @swag_from('user_get.yml')
     def get(self, id):
@@ -61,6 +64,7 @@ class Users(Resource):
         del USERS[id]
         return '', 204
 
+# Route does not need ID, used to post new user
 class UsersList(Resource):
     @swag_from('user_list.yml')
     @jwt_required()
@@ -92,6 +96,6 @@ class UsersList(Resource):
         USERS[id] = {'firstname': args['firstname'], 'lastname': args['lastname']}
         return USERS[id], 201
 
-
+# Add the routes
 api.add_resource(Users, '/v1/users/<id>')
 api.add_resource(UsersList, '/v1/userslist')

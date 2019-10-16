@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 
 from app import app
 
+# See __init__.py
 @app.route("/")
 def index():
     return """

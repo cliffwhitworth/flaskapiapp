@@ -1,3 +1,5 @@
+# Keeping this code for examples
+
 from flask import Flask, jsonify, request
 from flask_restful import Resource, Api
 from flasgger.utils import swag_from
